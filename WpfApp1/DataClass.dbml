@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="DataClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="User">
+    <Type Name="User">
+      <Column Name="UserName" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" CanBeNull="false" />
+      <Column Name="Num" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Diary">
+    <Type Name="Diary">
+      <Column Name="Date" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Tittle" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" CanBeNull="false" />
+      <Column Name="Num" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

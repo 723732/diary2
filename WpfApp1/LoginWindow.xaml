@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfApp1.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="300" Width="300">
+    <Window.Resources>
+        <RoutedCommand x:Key="LoginMainWindow"/>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource LoginMainWindow}" Executed="LoginMainWindow_Executed" CanExecute="LoginMainWindow_CanExecute"/>
+    </Window.CommandBindings>
+    <Grid ShowGridLines="True" Height="271" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="用户名："/>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding UserName,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="密码"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Password,UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Grid.Column="1" Grid.Row="3" Content="登陆" Command="{StaticResource LoginMainWindow}"/>
+    </Grid>
+</Window>
