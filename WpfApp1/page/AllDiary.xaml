@@ -9,6 +9,11 @@
       Title="AllDiary">
 
     <Grid>
-        <Label>这是页面一</Label>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="日期" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="标题" Binding="{Binding Tittle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

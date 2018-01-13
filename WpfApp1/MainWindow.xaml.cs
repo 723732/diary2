@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace WpfApp1
 {
     /// <summary>
@@ -23,17 +24,21 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            
             //添加页面的Uri地址，采用相对路径，根路径是项目名,实现allViews的初始化  
             allViews.Add("page1", new Uri("page/AllDiary.xaml", UriKind.Relative));
             allViews.Add("page2", new Uri("page/AddDiary.xaml", UriKind.Relative));
+
+            mainFrame.Navigate(allViews["page1"]);
         }
+
         private Dictionary<string, Uri> allViews = new Dictionary<string, Uri>(); //包含所有页面 
 
         private void ShowDia_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             mainFrame.Navigate(allViews["page1"]);
         }
-
+        
         private void ShowDia_CanEecuted(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;

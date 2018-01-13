@@ -23,6 +23,10 @@ namespace WpfApp1.page
         public AllDiary()
         {
             InitializeComponent();
+            _allDiaryModel = new allDiaryModel();
+            dataGrid.DataContext = _allDiaryModel.memberData;
+            _allDiaryModel.ShowData();
         }
+        private allDiaryModel _allDiaryModel;
     }
 }
