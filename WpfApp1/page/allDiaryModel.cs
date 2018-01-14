@@ -16,13 +16,14 @@ namespace WpfApp1.page
         {
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
 
-            var aDiarys = from r in aDataContext.Diary select r;
+            var aDiarys = from r in aDataContext.Diary where r.Num == LoginModel.UserNum select r;
             foreach (Diary aDiary in aDiarys)
             {
                 memberData.Add(new allDiaryModel()
                 {
                     _Date = aDiary.Date,
-                    _Tittle = aDiary.Tittle
+                    _Tittle = aDiary.Tittle,
+                    _Content = aDiary.Content
                 });
                
             }
@@ -33,6 +34,9 @@ namespace WpfApp1.page
 
         public string Tittle { get { return _Tittle; } set { if (_Tittle == value) return; _Tittle = value;  } }
         private string _Tittle;
+
+        public string Content { get { return _Content; } set { if (_Content == value) return; _Content = value; } }
+        private string _Content;
    
     }
 }

@@ -7,12 +7,25 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="AllDiary">
-
+    <Page.Resources>
+        <RoutedCommand x:Key="DetialDiary"/>
+    </Page.Resources>
+    <Page.CommandBindings>
+        <CommandBinding Command="{StaticResource DetialDiary}" Executed="DetialDiary_Executed" CanExecute="DetialDiary_CanExecute"/>
+    </Page.CommandBindings>
     <Grid>
         <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="日期" Binding="{Binding Date}"/>
                 <DataGridTextColumn Header="标题" Binding="{Binding Tittle}"/>
+                <DataGridTextColumn Header="内容" Binding="{Binding Content}" MaxWidth="250"/>
+                <DataGridTemplateColumn Header="操作">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="详细" Command="{StaticResource DetialDiary}" CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

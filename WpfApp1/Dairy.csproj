@@ -89,15 +89,24 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="page\detialDiary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="page\AddDiary.xaml.cs">
       <DependentUpon>AddDiary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="page\AddDiaryModel.cs" />
     <Compile Include="page\AllDiary.xaml.cs">
       <DependentUpon>AllDiary.xaml</DependentUpon>
     </Compile>
     <Compile Include="page\allDiaryModel.cs" />
+    <Compile Include="page\detialDiary.xaml.cs">
+      <DependentUpon>detialDiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="page\detilDiaryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -11,6 +11,8 @@ namespace WpfApp1
     class LoginModel : INotifyPropertyChanged
     {
         const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DiaryData;Integrated Security=true;";
+        public static string UserNum;
+
         public void LoginMainWindow()
         {
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
@@ -18,12 +20,18 @@ namespace WpfApp1
             User aUser = (from r in aDataContext.User where r.UserName == UserName select r).FirstOrDefault();
             if (aUser != null)
             {
+                UserNum = aUser.Num;
                 if(aUser.Password == Password)
                 {
                     MainWindow mainWindow = new MainWindow();
 
                     App.Current.MainWindow = mainWindow;
                     mainWindow.Show();
+
+     //               Console.WriteLine("插入新记录……");
+     //               Diary aNewContact = new Diary { Tittle = "张三", Content = "13000000000", Date = "20170202", Num = "2" };
+      //              aDataContext.Diary.InsertOnSubmit(aNewContact);
+      //              aDataContext.SubmitChanges();
                 }
                 else
                 {

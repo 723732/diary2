@@ -28,5 +28,26 @@ namespace WpfApp1.page
             _allDiaryModel.ShowData();
         }
         private allDiaryModel _allDiaryModel;
+        public static string tittle1;
+        public static string date1;
+        public static string content1;
+
+        private void DetialDiary_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+      //      Console.WriteLine($"{(this.dataGrid.SelectedItem as allDiaryModel).Tittle}");
+            //     NavigationService.Navigate(detialDiary, dataGrid);
+            tittle1 = (this.dataGrid.SelectedItem as allDiaryModel).Tittle;
+            date1 = (this.dataGrid.SelectedItem as allDiaryModel).Date;
+            content1 = (this.dataGrid.SelectedItem as allDiaryModel).Content;
+
+            detialDiary page = new detialDiary();
+            NavigationService ns = NavigationService.GetNavigationService(this);
+            ns.Navigate(page);
+        }
+
+        private void DetialDiary_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
 }
