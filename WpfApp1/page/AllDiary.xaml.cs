@@ -49,5 +49,22 @@ namespace WpfApp1.page
         {
             e.CanExecute = true;
         }
+
+        private void DeleteDiary_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            date1 = (this.dataGrid.SelectedItem as allDiaryModel).Date;
+ 
+            _allDiaryModel.DeleteData();
+            //删除后刷新页面
+            AllDiary page = new AllDiary();
+            NavigationService ns = NavigationService.GetNavigationService(this);
+            ns.Navigate(page);
+
+        }
+
+        private void DeleteDiary_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
 }

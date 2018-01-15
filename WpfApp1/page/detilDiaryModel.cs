@@ -15,13 +15,13 @@ namespace WpfApp1.page
         public void ExchangeData()
         {
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
-            Diary aOtherDiary = (from r in aDataContext.Diary where r.Date == AllDiary.date1 && r.Num==LoginModel.UserNum select r).FirstOrDefault();
+            Diary aOtherDiary = (from r in aDataContext.Diary where r.Date == _date && r.Num==LoginModel.UserNum select r).FirstOrDefault();
 
             //           aOtherDiary.Tittle = _tittle;
             //           aOtherDiary.Date = DateTime.Now.ToString("G");
             //          aOtherDiary.Content = _content;
             aDataContext.Diary.DeleteOnSubmit(aOtherDiary);
-            Diary aNewDiary = new Diary { Tittle = _tittle, Content = _content, Date = DateTime.Now.ToString("G"), Num = LoginModel.UserNum };
+            Diary aNewDiary = new Diary { Tittle = _tittle, Content = _content, Date = _date, Num = LoginModel.UserNum };
             aDataContext.Diary.InsertOnSubmit(aNewDiary);
 
             aDataContext.SubmitChanges();

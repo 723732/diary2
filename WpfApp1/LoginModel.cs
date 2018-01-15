@@ -17,11 +17,11 @@ namespace WpfApp1
         {
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
 
-            User aUser = (from r in aDataContext.User where r.UserName == UserName select r).FirstOrDefault();
+            User aUser = (from r in aDataContext.User where r.UserName == _UserName select r).FirstOrDefault();
             if (aUser != null)
             {
                 UserNum = aUser.Num;
-                if(aUser.Password == Password)
+                if(aUser.Password == _Password)
                 {
                     MainWindow mainWindow = new MainWindow();
 
