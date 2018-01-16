@@ -38,7 +38,9 @@ namespace WpfApp1
 
         private void ShowDia_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+        //    _filterPage.ShowData();
             mainFrame.Navigate(allViews["page1"]);
+            
         }
         
         private void ShowDia_CanEecuted(object sender, CanExecuteRoutedEventArgs e)
@@ -58,7 +60,7 @@ namespace WpfApp1
 
         private void StartFilter_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            _filterPage.DoFilter();
+      //      _filterPage.DoFilter();
             mainFrame.Navigate(allViews["page1"]);
         }
 

@@ -13,7 +13,37 @@ namespace WpfApp1
         const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DiaryData;Integrated Security=true;";
         public static string UserNum;
 
-        public void LoginMainWindow()
+        public void LinkSql()
+        {
+            try
+            {
+                // 连接数据库引擎
+                using (DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString))
+                {
+                    if (!aDataContext.DatabaseExists())
+                    {
+                        aDataContext.CreateDatabase();
+                        Console.WriteLine("数据库已经创建！");
+                    }
+                    else
+                    {
+                        Console.WriteLine("数据库已经存在！");
+                    }
+
+                    Console.WriteLine("插入新记录……");
+                    User aNewContact = new User { UserName = "zhang", Num = "1", Password = "111111" };
+                    aDataContext.User.InsertOnSubmit(aNewContact);
+                    aDataContext.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+            public void LoginMainWindow()
         {
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
 
@@ -28,10 +58,14 @@ namespace WpfApp1
                     App.Current.MainWindow = mainWindow;
                     mainWindow.Show();
 
-     //               Console.WriteLine("插入新记录……");
-     //               Diary aNewContact = new Diary { Tittle = "张三", Content = "13000000000", Date = "20170202", Num = "2" };
-      //              aDataContext.Diary.InsertOnSubmit(aNewContact);
-      //              aDataContext.SubmitChanges();
+                   //                Console.WriteLine("插入新记录……");
+                  //                 Diary aNewContact = new Diary { Tittle = "张三", Content = "13000000000", Date = "20170202", Num = "2" };
+                  //                aDataContext.Diary.InsertOnSubmit(aNewContact);
+                 //                 aDataContext.SubmitChanges();
+                 //   Console.WriteLine("插入新记录……");
+               //                 User aNewContact = new User { UserName = "张三",Password="111111", Num = "2" };
+                //                 aDataContext.User.InsertOnSubmit(aNewContact);
+               //                   aDataContext.SubmitChanges();
                 }
                 else
                 {

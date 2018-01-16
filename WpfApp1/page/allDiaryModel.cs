@@ -13,22 +13,45 @@ namespace WpfApp1.page
     class allDiaryModel : INotifyPropertyChanged
     {
         const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DiaryData;Integrated Security=true;";
+        //    public List<allDiaryModel> mylist = new List<allDiaryModel>();
+        private List<DiaryData> _mylist = new List<DiaryData>();
+        public List<DiaryData> mylist
+        {
 
-        public ObservableCollection<allDiaryModel> memberData = new ObservableCollection<allDiaryModel>();
+            get { return _mylist; }
+            set
+            {
+                if (_mylist == value) return; _mylist = value;
+            }
+        }
+
         public void ShowData()
         {
+    //        List<DiaryData> aMylist = new List<DiaryData>();
+
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
 
             var aDiarys = from r in aDataContext.Diary where r.Num == LoginModel.UserNum select r;
             foreach (Diary aDiary in aDiarys)
             {
-                memberData.Add(new allDiaryModel()
+                mylist.Add(new DiaryData()
                 {
-                    _Date = aDiary.Date,
-                    _Tittle = aDiary.Tittle,
-                    _Content = aDiary.Content
-                });              
+                    Date = aDiary.Date,
+                    Tittle = aDiary.Tittle,
+                    Content = aDiary.Content
+                });
             }
+            //foreach (Diary aDiary in aDiarys)
+            //{
+            //    mylist.Add(new allDiaryModel()
+            //    {
+            //        Date = aDiary.Date,
+            //        Tittle = aDiary.Tittle,
+            //        Content = aDiary.Content
+            //    });
+            //}
+            //    mylist = aMylist;
+            Console.WriteLine(mylist.Count);
         }
 
         public void DeleteData()
@@ -55,25 +78,32 @@ namespace WpfApp1.page
                 if (aRegex.IsMatch(aDiary.Tittle) || aRegex.IsMatch(aDiary.Content))
                 {
                     Console.WriteLine(aDiary.Content);
-                    memberData.Add(new allDiaryModel()
+                    mylist.Add(new DiaryData()
                     {
-                        _Date = aDiary.Date,
-                        _Tittle = aDiary.Tittle,
-                        _Content = aDiary.Content
+                        Date = aDiary.Date,
+                        Tittle = aDiary.Tittle,
+                        Content = aDiary.Content
                     });
                 }
             }
 
         }
 
-        public string Date { get { return _Date; } set { if (_Date == value) return; _Date = value; } }
-        private string _Date;
+        public class DiaryData
+        {
+            public string Date { get; set; }
+            public string Tittle { get; set; }
+            public string Content { get; set; }
+        }
 
-        public string Tittle { get { return _Tittle; } set { if (_Tittle == value) return; _Tittle = value;  } }
-        private string _Tittle;
+        //public string Date { get { return _Date; } set { if (_Date == value) return; _Date = value; } }
+        //private string _Date;
 
-        public string Content { get { return _Content; } set { if (_Content == value) return; _Content = value; } }
-        private string _Content;
+        //public string Tittle { get { return _Tittle; } set { if (_Tittle == value) return; _Tittle = value;  } }
+        //private string _Tittle;
+
+        //public string Content { get { return _Content; } set { if (_Content == value) return; _Content = value; } }
+        //private string _Content;
 
         public string Pattern { get { return _Pattern; } set { if (_Pattern == value) return; _Pattern = value; OnPropertyChanged(nameof(Pattern)); } }
         private string _Pattern;

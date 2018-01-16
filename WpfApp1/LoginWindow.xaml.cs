@@ -29,6 +29,7 @@ namespace WpfApp1
 
         private void LoginMainWindow_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            _LoginModel.LinkSql();
             _LoginModel.LoginMainWindow();
             this.Close();
         }

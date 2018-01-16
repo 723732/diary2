@@ -24,8 +24,8 @@ namespace WpfApp1.page
         {
             InitializeComponent();
             _allDiaryModel = new allDiaryModel();
-            dataGrid.DataContext = _allDiaryModel.memberData;
-            _allDiaryModel.ShowData();
+            this.dataGrid.DataContext = _allDiaryModel.mylist;
+            //     _allDiaryModel.ShowData();
         }
         private allDiaryModel _allDiaryModel;
         public static string tittle1;
@@ -36,9 +36,9 @@ namespace WpfApp1.page
         {
       //      Console.WriteLine($"{(this.dataGrid.SelectedItem as allDiaryModel).Tittle}");
             //     NavigationService.Navigate(detialDiary, dataGrid);
-            tittle1 = (this.dataGrid.SelectedItem as allDiaryModel).Tittle;
-            date1 = (this.dataGrid.SelectedItem as allDiaryModel).Date;
-            content1 = (this.dataGrid.SelectedItem as allDiaryModel).Content;
+   //         tittle1 = (this.dataGrid.SelectedItem as allDiaryModel).DiaryData.Tittle;
+   //         date1 = (this.dataGrid.SelectedItem as allDiaryModel).Date;
+    //        content1 = (this.dataGrid.SelectedItem as allDiaryModel).Content;
 
             detialDiary page = new detialDiary();
             NavigationService ns = NavigationService.GetNavigationService(this);
@@ -52,7 +52,7 @@ namespace WpfApp1.page
 
         private void DeleteDiary_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            date1 = (this.dataGrid.SelectedItem as allDiaryModel).Date;
+    //        date1 = (this.dataGrid.SelectedItem as allDiaryModel).Date;
  
             _allDiaryModel.DeleteData();
             //删除后刷新页面
