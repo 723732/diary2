@@ -14,10 +14,9 @@ namespace WpfApp1.page
     {
         const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DiaryData;Integrated Security=true;";
         //    public List<allDiaryModel> mylist = new List<allDiaryModel>();
-        private List<DiaryData> _mylist = new List<DiaryData>();
-        public List<DiaryData> mylist
+        private static ObservableCollection<DiaryData> _mylist = new ObservableCollection<DiaryData>();
+        public ObservableCollection<DiaryData> mylist
         {
-
             get { return _mylist; }
             set
             {
@@ -27,8 +26,7 @@ namespace WpfApp1.page
 
         public void ShowData()
         {
-    //        List<DiaryData> aMylist = new List<DiaryData>();
-
+            mylist.Clear();
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
 
             var aDiarys = from r in aDataContext.Diary where r.Num == LoginModel.UserNum select r;
@@ -41,34 +39,27 @@ namespace WpfApp1.page
                     Content = aDiary.Content
                 });
             }
-            //foreach (Diary aDiary in aDiarys)
-            //{
-            //    mylist.Add(new allDiaryModel()
-            //    {
-            //        Date = aDiary.Date,
-            //        Tittle = aDiary.Tittle,
-            //        Content = aDiary.Content
-            //    });
-            //}
-            //    mylist = aMylist;
             Console.WriteLine(mylist.Count);
         }
 
         public void DeleteData()
         {
+            AllDiary _allDiary = new AllDiary();
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
-            Diary aOtherDiary = (from r in aDataContext.Diary where r.Date == AllDiary.date1 && r.Num == LoginModel.UserNum select r).FirstOrDefault();
+            Diary aOtherDiary = (from r in aDataContext.Diary where r.Date == _allDiary.Date1 && r.Num == LoginModel.UserNum select r).FirstOrDefault();
             aDataContext.Diary.DeleteOnSubmit(aOtherDiary);
 
             aDataContext.SubmitChanges();
 
             MessageBox.Show("删除成功！");
+            ShowData();
         }
 
         public void DoFilter()
         {
             Regex aRegex = new Regex(Pattern);
             Console.WriteLine(Pattern);
+            mylist.Clear();
 
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
 
@@ -86,6 +77,7 @@ namespace WpfApp1.page
                     });
                 }
             }
+            Console.WriteLine(mylist.Count);
 
         }
 

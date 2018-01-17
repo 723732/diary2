@@ -20,12 +20,22 @@ namespace WpfApp1.page
     /// </summary>
     public partial class detialDiary : Page
     {
-        public detialDiary()
+        //public detialDiary()
+        //{
+        //    InitializeComponent();
+        //    _detialDiaryModel = new detilDiaryModel();
+        //    this.DataContext = _detialDiaryModel;
+        //    _detialDiaryModel.show();
+        //}
+        
+        public detialDiary(string tittle,string date,string content)
         {
             InitializeComponent();
             _detialDiaryModel = new detilDiaryModel();
             this.DataContext = _detialDiaryModel;
-            _detialDiaryModel.show();
+            _detialDiaryModel.tittle = tittle;
+            _detialDiaryModel.date = date;
+            _detialDiaryModel.content = content;
         }
         private detilDiaryModel _detialDiaryModel;
 

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using WpfApp1.page;
 
 namespace WpfApp1
 {
@@ -38,7 +38,7 @@ namespace WpfApp1
 
         private void ShowDia_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-        //    _filterPage.ShowData();
+            _filterPage.ShowData();
             mainFrame.Navigate(allViews["page1"]);
             
         }
@@ -60,8 +60,13 @@ namespace WpfApp1
 
         private void StartFilter_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-      //      _filterPage.DoFilter();
+            //AllDiary page = new AllDiary();
+            //NavigationService ns = NavigationService.GetNavigationService(this);
+            //ns.Navigate(page);
+            mainFrame.Refresh();
+            _filterPage.DoFilter();
             mainFrame.Navigate(allViews["page1"]);
+            
         }
 
         private void StartFilter_CanExecute(object sender, CanExecuteRoutedEventArgs e)

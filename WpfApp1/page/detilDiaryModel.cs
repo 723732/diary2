@@ -29,15 +29,6 @@ namespace WpfApp1.page
             MessageBox.Show("修改成功！");
         }
 
-        public void show()
-        {
-            _tittle = AllDiary.tittle1;
-            _date = AllDiary.date1;
-            _content = AllDiary.content1;
-           
-         //   Console.WriteLine($"{AllDiary.tittle1}");
-        }
-
         public string tittle { get { return _tittle; } set { if (_tittle == value) return; _tittle = value; OnPropertyChanged(nameof(tittle)); } }
         private string _tittle;
 
