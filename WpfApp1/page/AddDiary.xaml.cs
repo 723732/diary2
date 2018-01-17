@@ -31,9 +31,9 @@ namespace WpfApp1.page
         private void AddData_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             _AddDiaryModel.AddData();
-            AllDiary page = new AllDiary();
-            NavigationService ns = NavigationService.GetNavigationService(this);
-            ns.Navigate(page);
+            //AllDiary page = new AllDiary();
+            //NavigationService ns = NavigationService.GetNavigationService(this);
+            //ns.Navigate(page);
         }
 
         private void AddData_CanExecute(object sender, CanExecuteRoutedEventArgs e)

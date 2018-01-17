@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="300">
+        Title="LoginWindow" Height="300" Width="400">
     <Window.Resources>
         <RoutedCommand x:Key="LoginMainWindow"/>
     </Window.Resources>
@@ -17,8 +17,13 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -28,6 +33,6 @@
         <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding UserName,UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock Grid.Column="0" Grid.Row="2" Text="密码"/>
         <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Password,UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Grid.Column="1" Grid.Row="3" Content="登陆" Command="{StaticResource LoginMainWindow}"/>
+        <Button  Content="登陆" Command="{StaticResource LoginMainWindow}" RenderTransformOrigin="1.87,4.439" Grid.ColumnSpan="2" Grid.Column="3" Margin="20,0.333,0.333,0" Grid.Row="4"/>
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,9 @@ namespace WpfApp1.page
         {
             InitializeComponent();
             _allDiaryModel = new allDiaryModel();
-    //        this.DataContext = _allDiaryModel;
             this.dataGrid.DataContext = _allDiaryModel.mylist;
+    //        Console.WriteLine("界面mylist");
+     //       Console.WriteLine(_allDiaryModel.mylist.Count);
 
         }
         private allDiaryModel _allDiaryModel;
@@ -45,7 +47,7 @@ namespace WpfApp1.page
             Tittle1 = (this.dataGrid.SelectedItem as DiaryData).Tittle;
             Date1 = (this.dataGrid.SelectedItem as DiaryData).Date;
             Content1 = (this.dataGrid.SelectedItem as DiaryData).Content;
-            Console.WriteLine(Tittle1);
+     //       Console.WriteLine(Tittle1);
 
             detialDiary page = new detialDiary(Tittle1,Date1,Content1);
             NavigationService ns = NavigationService.GetNavigationService(this);
@@ -59,13 +61,8 @@ namespace WpfApp1.page
 
         private void DeleteDiary_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-    //        date1 = (this.dataGrid.SelectedItem as allDiaryModel).Date;
- 
-            _allDiaryModel.DeleteData();
-            //删除后刷新页面
-            //AllDiary page = new AllDiary();
-            //NavigationService ns = NavigationService.GetNavigationService(this);
-            //ns.Navigate(page);
+            Date1 = (this.dataGrid.SelectedItem as DiaryData).Date;
+            _allDiaryModel.DeleteData(Date1);
 
         }
 

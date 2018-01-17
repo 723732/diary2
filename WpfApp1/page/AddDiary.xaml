@@ -15,7 +15,7 @@
     </Page.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -27,6 +27,8 @@
         <TextBlock Grid.Column="0" Grid.Row="1" Text="内容:" HorizontalAlignment="Right"/>
         <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Tittle,UpdateSourceTrigger=PropertyChanged}" Height="17"/>
         <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Content,UpdateSourceTrigger=PropertyChanged}" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True"/>
-        <Button Grid.Column="1" Grid.Row="2" Height="18" Width="35" HorizontalAlignment="Left" Content="提交" Command="{StaticResource AddData}"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Height="18" Text="提交时间:" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="1" Grid.Row="2" BorderBrush="White" Text="{Binding Date,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="17" Margin="56,2,95,1"/>
+        <Button Grid.Column="1" Grid.Row="2" Height="18" Width="35" HorizontalAlignment="Right" Content="提交" Command="{StaticResource AddData}"/>
     </Grid>
 </Page>

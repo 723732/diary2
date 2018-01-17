@@ -33,6 +33,7 @@ namespace WpfApp1.page
             InitializeComponent();
             _detialDiaryModel = new detilDiaryModel();
             this.DataContext = _detialDiaryModel;
+
             _detialDiaryModel.tittle = tittle;
             _detialDiaryModel.date = date;
             _detialDiaryModel.content = content;

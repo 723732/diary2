@@ -19,8 +19,8 @@
         <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding }">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="日期" Binding="{Binding Date}"/>
-                <DataGridTextColumn Header="标题" Binding="{Binding Tittle}" MaxWidth="145"/>
-                <DataGridTextColumn Header="内容" Binding="{Binding Content}" MaxWidth="250"/>
+                <DataGridTextColumn Header="标题" Binding="{Binding Tittle}" Width="80"/>
+                <DataGridTextColumn Header="内容" Binding="{Binding Content}" Width="230"/>
                 <DataGridTemplateColumn Header="操作">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

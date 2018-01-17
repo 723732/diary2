@@ -14,6 +14,19 @@ namespace WpfApp1.page
     {
         const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DiaryData;Integrated Security=true;";
         //    public List<allDiaryModel> mylist = new List<allDiaryModel>();
+        //     private static ObservableCollection<DiaryData> _mylist = new ObservableCollection<DiaryData>();
+        //public allDiaryModel(ObservableCollection<DiaryData> mylist)
+        //{
+        //    this._mylist = mylist;
+        //    //Console.WriteLine("构造");
+        //    //Console.WriteLine(this.mylist.Count);
+        //}
+            
+        //public allDiaryModel() {
+        //    Console.WriteLine("构造");
+        //    Console.WriteLine(this.mylist.Count);
+        //}
+
         private static ObservableCollection<DiaryData> _mylist = new ObservableCollection<DiaryData>();
         public ObservableCollection<DiaryData> mylist
         {
@@ -40,13 +53,14 @@ namespace WpfApp1.page
                 });
             }
             Console.WriteLine(mylist.Count);
+        
         }
 
-        public void DeleteData()
+        public void DeleteData(string Date)
         {
-            AllDiary _allDiary = new AllDiary();
+      //      AllDiary _allDiary = new AllDiary();
             DataClassDataContext aDataContext = new DataClassDataContext(ConnectionString);
-            Diary aOtherDiary = (from r in aDataContext.Diary where r.Date == _allDiary.Date1 && r.Num == LoginModel.UserNum select r).FirstOrDefault();
+            Diary aOtherDiary = (from r in aDataContext.Diary where r.Date == Date && r.Num == LoginModel.UserNum select r).FirstOrDefault();
             aDataContext.Diary.DeleteOnSubmit(aOtherDiary);
 
             aDataContext.SubmitChanges();
