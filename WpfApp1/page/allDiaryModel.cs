@@ -33,7 +33,8 @@ namespace WpfApp1.page
             get { return _mylist; }
             set
             {
-                if (_mylist == value) return; _mylist = value;
+                if (_mylist == value) return;
+                _mylist = value;
             }
         }
 

@@ -29,12 +29,21 @@ namespace WpfApp1
 
         private void LoginMainWindow_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            _LoginModel.LinkSql();
             _LoginModel.LoginMainWindow();
             this.Close();
         }
 
         private void LoginMainWindow_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void NewUser_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            _LoginModel.NewUser();
+        }
+
+        private void NewUser_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }

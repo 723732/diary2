@@ -72,12 +72,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClass.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LinkToSql.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

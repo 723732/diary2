@@ -27,8 +27,8 @@ namespace WpfApp1.page
             InitializeComponent();
             _allDiaryModel = new allDiaryModel();
             this.dataGrid.DataContext = _allDiaryModel.mylist;
-    //        Console.WriteLine("界面mylist");
-     //       Console.WriteLine(_allDiaryModel.mylist.Count);
+ //           Console.WriteLine("界面mylist");
+  //          Console.WriteLine(_allDiaryModel.mylist.Count);
 
         }
         private allDiaryModel _allDiaryModel;

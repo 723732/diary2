@@ -11,9 +11,9 @@ namespace WpfApp1
     class LoginModel : INotifyPropertyChanged
     {
         const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DiaryData;Integrated Security=true;";
-        public static string UserNum;
+        public static int UserNum;
 
-        public void LinkSql()
+        public void NewUser()
         {
             try
             {
@@ -24,16 +24,38 @@ namespace WpfApp1
                     {
                         aDataContext.CreateDatabase();
                         Console.WriteLine("数据库已经创建！");
+                        Number aNewNum = new Number { exNum = 0, nowNum = 1 };
+                        aDataContext.Number.InsertOnSubmit(aNewNum);
+                        aDataContext.SubmitChanges();
                     }
                     else
                     {
                         Console.WriteLine("数据库已经存在！");
                     }
 
-                    Console.WriteLine("插入新记录……");
-                    User aNewContact = new User { UserName = "zhang", Num = "1", Password = "111111" };
-                    aDataContext.User.InsertOnSubmit(aNewContact);
-                    aDataContext.SubmitChanges();
+                    //Console.WriteLine("插入新记录……");
+                    //User aNewContact = new User { UserName = "zhang", Num = "1", Password = "111111" };
+                    //aDataContext.User.InsertOnSubmit(aNewContact);
+                    //aDataContext.SubmitChanges();
+                    User aUser = (from r in aDataContext.User where r.UserName == _UserName select r).FirstOrDefault();
+                    if (aUser != null)
+                    {
+                        MessageBox.Show("用户已存在，请重新输入用户名！");
+                    }
+                    else
+                    {
+                        Number aNumber = (from r in aDataContext.Number select r).FirstOrDefault();
+
+                        User aNewContact = new User { UserName = _UserName, Password = _Password, Num = aNumber.nowNum };
+                        aDataContext.User.InsertOnSubmit(aNewContact);
+
+                        Number aNewNum = new Number { exNum = aNumber.nowNum, nowNum = aNumber.nowNum + 1 };
+                        aDataContext.Number.InsertOnSubmit(aNewNum);
+                        aDataContext.Number.DeleteOnSubmit(aNumber);
+
+                        aDataContext.SubmitChanges();
+                        MessageBox.Show("注册成功，请登陆！");
+                    }
                 }
             }
             catch (Exception ex)

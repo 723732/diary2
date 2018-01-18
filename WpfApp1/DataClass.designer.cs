@@ -35,6 +35,9 @@ namespace WpfApp1
     partial void InsertDiary(Diary instance);
     partial void UpdateDiary(Diary instance);
     partial void DeleteDiary(Diary instance);
+    partial void InsertNumber(Number instance);
+    partial void UpdateNumber(Number instance);
+    partial void DeleteNumber(Number instance);
     #endregion
 		
 		public DataClassDataContext(string connection) : 
@@ -76,6 +79,14 @@ namespace WpfApp1
 				return this.GetTable<Diary>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Number> Number
+		{
+			get
+			{
+				return this.GetTable<Number>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
@@ -88,7 +99,7 @@ namespace WpfApp1
 		
 		private string _Password;
 		
-		private string _Num;
+		private int _Num;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -98,7 +109,7 @@ namespace WpfApp1
     partial void OnUserNameChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
-    partial void OnNumChanging(string value);
+    partial void OnNumChanging(int value);
     partial void OnNumChanged();
     #endregion
 		
@@ -147,8 +158,8 @@ namespace WpfApp1
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Num", CanBeNull=false)]
-		public string Num
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Num")]
+		public int Num
 		{
 			get
 			{
@@ -200,7 +211,7 @@ namespace WpfApp1
 		
 		private string _Content;
 		
-		private string _Num;
+		private int _Num;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -212,7 +223,7 @@ namespace WpfApp1
     partial void OnTittleChanged();
     partial void OnContentChanging(string value);
     partial void OnContentChanged();
-    partial void OnNumChanging(string value);
+    partial void OnNumChanging(int value);
     partial void OnNumChanged();
     #endregion
 		
@@ -281,8 +292,8 @@ namespace WpfApp1
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Num", CanBeNull=false)]
-		public string Num
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Num")]
+		public int Num
 		{
 			get
 			{
@@ -297,6 +308,92 @@ namespace WpfApp1
 					this._Num = value;
 					this.SendPropertyChanged("Num");
 					this.OnNumChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class Number : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _exNum;
+		
+		private int _nowNum;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnexNumChanging(int value);
+    partial void OnexNumChanged();
+    partial void OnnowNumChanging(int value);
+    partial void OnnowNumChanged();
+    #endregion
+		
+		public Number()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_exNum", IsPrimaryKey=true)]
+		public int exNum
+		{
+			get
+			{
+				return this._exNum;
+			}
+			set
+			{
+				if ((this._exNum != value))
+				{
+					this.OnexNumChanging(value);
+					this.SendPropertyChanging();
+					this._exNum = value;
+					this.SendPropertyChanged("exNum");
+					this.OnexNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nowNum")]
+		public int nowNum
+		{
+			get
+			{
+				return this._nowNum;
+			}
+			set
+			{
+				if ((this._nowNum != value))
+				{
+					this.OnnowNumChanging(value);
+					this.SendPropertyChanging();
+					this._nowNum = value;
+					this.SendPropertyChanged("nowNum");
+					this.OnnowNumChanged();
 				}
 			}
 		}

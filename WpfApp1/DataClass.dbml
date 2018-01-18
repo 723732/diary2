@@ -3,7 +3,7 @@
     <Type Name="User">
       <Column Name="UserName" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Password" Type="System.String" CanBeNull="false" />
-      <Column Name="Num" Type="System.String" CanBeNull="false" />
+      <Column Name="Num" Type="System.Int32" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="" Member="Diary">
@@ -11,7 +11,13 @@
       <Column Name="Date" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Tittle" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Content" Type="System.String" CanBeNull="false" />
-      <Column Name="Num" Type="System.String" CanBeNull="false" />
+      <Column Name="Num" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Number">
+    <Type Name="Number">
+      <Column Name="exNum" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nowNum" Type="System.Int32" CanBeNull="false" />
     </Type>
   </Table>
 </Database>
